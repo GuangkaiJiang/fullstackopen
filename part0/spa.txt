@@ -1,0 +1,20 @@
+title single page app
+browser-server HTTP GET httpsstudies.cs.helsinki.fiexampleappspa
+server--browser HTML-code
+browser-server HTTP GET httpsstudies.cs.helsinki.fiexampleappmain.css
+server--browser main.css
+browser-server HTTP GET httpsstudies.cs.helsinki.fiexampleappspa.js
+server--browser spa.js
+
+note over browser
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser-server HTTP GET httpsstudies.cs.helsinki.fiexampleappdata.json
+server--browser [{ contentHi, this is a test for me,date2021-12-26T210625.718Z}, ...]
+
+note over browser
+browser executes the event handler
+that renders notes to display
+end note
