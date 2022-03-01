@@ -100,14 +100,16 @@ const App = () => {
     </Toggle>
 )
 
-  const listblogs=()=>(
-    <div>
-      <h2>blogs</h2>
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} update={putblog} del={deleteblog}/>
-      )}
-    </div>
-  )
+  const listblogs=()=>{
+    return (
+      <div>
+        <h2>blogs</h2>
+        {blogs.map(blog =>
+          <Blog key={blog.id} blog={blog} update={putblog} del={deleteblog}/>
+        )}
+      </div>
+    )
+  }
 
   const putblog = async (id,blog) => {
     const Blog = { ...blog }
