@@ -104,7 +104,7 @@ const App = () => {
     <div>
       <h2>blogs</h2>
       {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} update={putblog}/>
+        <Blog key={blog.id} blog={blog} update={putblog} del={deleteblog}/>
       )}
     </div>
   )
@@ -119,6 +119,16 @@ const App = () => {
     setBlogs(res)
 }
 
+const deleteblog = (id) => {
+  const blogToDelete = blogs.find(b => b.id === id)
+  if (window.confirm(`Remove blog '${blogToDelete.title}' by '${blogToDelete.author}'?`)) {
+      blogService
+          .deleteBlog(id)
+          .then(()=>{
+              setBlogs(blogs.filter(a => a.id !== id))
+          })
+  }
+}
   const handleLogout = (event) => {
     window.localStorage.clear()
     setUser(null)

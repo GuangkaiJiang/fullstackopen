@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-const Expand = ({blog, handleLike}) => (
+const Expand = ({blog, handleLike,handleDel}) => (
     <div>
         {blog.url}
       <br/>
@@ -10,10 +10,13 @@ const Expand = ({blog, handleLike}) => (
     </button>
         <br/>
         {blog.user.username ? blog.user.username: null}<br/>
+        <button onClick={()=>handleDel(blog.id)}>
+        remove
+    </button>
     </div>
 )
 
-const Blog = ({ blog, update }) => {
+const Blog = ({ blog, update, del }) => {
     const [show, setShow] = useState(false)
     const handleClick = () =>{
         setShow(!show)
@@ -21,6 +24,9 @@ const Blog = ({ blog, update }) => {
     
     const handleLike= (id) =>{
       update(id, blog)
+    }
+  const handleDel=(id)=>{
+    del(id)
   }
     return (
         <div>
@@ -29,7 +35,7 @@ const Blog = ({ blog, update }) => {
             show
             </button>
             <div>
-                {show ? <Expand blog={blog} handleLike={handleLike}/> : null}
+                {show ? <Expand blog={blog} handleLike={handleLike} handleDel={handleDel}/> : null}
             </div>
         </div>
     )
